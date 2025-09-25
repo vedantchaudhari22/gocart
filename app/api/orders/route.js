@@ -213,7 +213,9 @@ export async function GET(request) {
         ],
       },
       include: {
-        orderItems: { include: { product: true } },
+        orderItems: {
+          include: { product: true },   // ✅ Show products in bookings
+        },
         address: true,
       },
       orderBy: { createdAt: "desc" },
