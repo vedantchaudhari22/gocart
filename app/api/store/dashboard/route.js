@@ -1,7 +1,7 @@
 import authSeller from "@/middlewares/authSeller";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-
+import  prisma  from "@/lib/prisma";
 
 // get the dashborad data for sellers
 export async function GET(request) {
@@ -19,7 +19,7 @@ export async function GET(request) {
             where: {storeId}
         })
 
-        const ratings = await prisma.ratings.findMany({
+        const ratings = await prisma.rating.findMany({
             where: {productId: {in: products.map(product => product.id)}},
             include: {user: true, product: true}
         })

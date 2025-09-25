@@ -24,8 +24,8 @@ export async function POST(request){
         const category = formData.get("category");
         const images = formData.getAll("images");
 
-        if(!name || !description || !mrp || !price || !category || !images.length < 1){
-            return NextResponse.json({error: "Missing Product Details"}, {status: 100})
+        if(!name || !description || !mrp || !price || !category || images.length < 1){
+            return NextResponse.json({error: "Missing Product Details"}, {status: 400})
         }
 
         //uploading images to imagekit
